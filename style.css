@@ -8,11 +8,19 @@ html {
 }
 
 #cards_d {
-	display: flex;
+	flex:1;
+}
+
+#cards_d img{
+	height: 20vw;
 }
 
 #cards_p {
-	display: flex;
+	flex:1;
+}
+
+#cards_p img{
+	height: 15vw;
 }
 
 #hitstand {
