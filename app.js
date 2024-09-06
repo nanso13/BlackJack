@@ -5,13 +5,16 @@
 	const cards_p_div = document.getElementById("cards_p");
 	const card_d_div = document.createElement("div"); 
 	const card_p_div = document.createElement("div");
+	const winpoint = document.getElementById("winpoint");
 	let deck_id = "";
 
 // Start BlackJackボタンを押されたときに動く
 document.getElementById("start").addEventListener("click", async () => {
 	const button = document.getElementById("hitstand");
+	const winp = document.createElement("p");
 	cards_d_div.innerHTML = "";
 	cards_p_div.innerHTML = "";
+	winpoint.innerHTML = "";
 	const response = await fetch(API + "new/shuffle/?deck_count=1");
 	const blackjack = await response.json();
 	deck_id = blackjack.deck_id;
@@ -42,6 +45,9 @@ document.getElementById("start").addEventListener("click", async () => {
 	}
 	document.getElementById('hit').style.visibility = 'visible';
 	document.getElementById('stand').style.visibility = 'visible';
+	winp.textContent = random_win_point;
+	document.getElementById("winpoint").appendChild(winp);
+	
 	
 });
 
