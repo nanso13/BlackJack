@@ -23,6 +23,13 @@ document.getElementById("start").addEventListener("click", async () => {
 	const random_win_point = Math.floor(Math.random() * 30 + 1);
 	const card = document.createElement("img");
 	
+	var num = random_win_point;
+	$('#roulette')
+		.removeClass(function(index, className) {
+        return (className.match(/(^|\s)number-\S+/g) || []).join(' ');
+    	})
+    	.addClass('number-' + num);
+	
 	
 	// ディーラーとプレイヤーのカードを二枚引く
 	for (let i = 0; i < 2; i++) {
@@ -34,7 +41,7 @@ document.getElementById("start").addEventListener("click", async () => {
 		const cards_d_value = document.createElement("p");
 		const cards_p_image = document.createElement("img");
 		const cards_p_value = document.createElement("p");
-		 
+		
 		cards_d_image.src = draw.cards[0].image;
 		cards_d_value.textContent = draw.cards[0].value;
 		cards_p_image.src = draw.cards[1].image;
