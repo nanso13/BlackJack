@@ -27,7 +27,7 @@ document.getElementById("start").addEventListener("click", async () => {
 	deck_id = blackjack.deck_id;
 	console.log(deck_id);
 	// ランダムで勝ち点を出す
-	const random_win_point = Math.floor(Math.random() * 30 + 1);
+	const random_win_point = Math.floor(Math.random() * 40 + 11);
 	const card = document.createElement("img");
 	
 	
