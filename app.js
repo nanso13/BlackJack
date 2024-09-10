@@ -11,7 +11,9 @@
 	const d_work = [];
 	const p_work = [];
 	let work = 1;
+	let work2 = 2;
 	let deck_id = "";
+	let random_win_point = "";
 
 // Start BlackJackボタンを押されたときに動く
 document.getElementById("start").addEventListener("click", async () => {
@@ -27,15 +29,8 @@ document.getElementById("start").addEventListener("click", async () => {
 	deck_id = blackjack.deck_id;
 	console.log(deck_id);
 	// ランダムで勝ち点を出す
-	const random_win_point = Math.floor(Math.random() * 40 + 11);
+	random_win_point = Math.floor(Math.random() * 30 + 21);
 	const card = document.createElement("img");
-	
-	var num = random_win_point;
-	$('#roulette')
-		.removeClass(function(index, className) {
-        return (className.match(/(^|\s)number-\S+/g) || []).join(' ');
-    	})
-    	.addClass('number-' + num);
 	
 	
 	// ディーラーとプレイヤーのカードを二枚引く
@@ -47,21 +42,14 @@ document.getElementById("start").addEventListener("click", async () => {
 		const cards_d_value = document.createElement("p");
 		const cards_p_image = document.createElement("img");
 		const cards_p_value = document.createElement("p");
-<<<<<<< HEAD
-		
-		cards_d_image.src = draw.cards[0].image;
-		cards_d_value.textContent = draw.cards[0].value;
-=======
 		// ディーラーのカード画像
 		if(i == 0) {
 			cards_d_image.src = draw.cards[0].image;
 		}else {
-			cards_d_image.src = "https://www.deckofcardsapi.com/static/img/back.png";
 		}
 		// ディーラーのカードの数値
 		d_work[i] = draw.cards[0].value;
 		
->>>>>>> 3c3c19e31c642b5ad36222025f6e80f16ce0ba51
 		cards_p_image.src = draw.cards[1].image;
 		p_work[i] = draw.cards[1].value;
 		cards_d_value.textContent = d_work[i];
@@ -112,15 +100,43 @@ document.getElementById("hit").addEventListener("click", async () => {
 	p_point = parseInt(p_point) + parseInt(p_work[work]);
 	console.log(p_point);
 	cards_p_div.appendChild(cards_p_image);
+	if(p_point >= random_win_point) {
+		logic();
+	}
 });
 
 // スタンドボタンを押された場合
 document.getElementById("stand").addEventListener("click", async () => {
-	document.getElementById("hit").style.visibility = 'hidden';
-	document.getElementById("stand").style.visibility = 'hidden';
+	logic();
 });
 
-function logic(){
+async function logic(){
+	document.getElementById("hit").style.visibility = 'hidden';
+	document.getElementById("stand").style.visibility = 'hidden';
+	console.log(random_win_point - 4)
+	while(d_point < (random_win_point - 4)) {
+		const response = await fetch(API + deck_id +"/draw/?count=1")
+		const draw = await response.json();
+		const cards_d_image = document.createElement("img");
+		const cards_d_value = document.createElement("p");
+		cards_d_image.src = draw.cards[0].image;
+		cards_d_div.appendChild(cards_d_image);
+		d_work[work2] = draw.cards[0].value;
+		if(d_work[work2] == "KING" || d_work[work2] == "QUEEN" || d_work[work2] == "JACK") {
+			d_work[work2] = 10;
+		}else if (d_work[work2] == "ACE") {
+			d_work[work2] = 1;
+		}
+		cards_d_value.textContent = d_work[work2];
+		console.log(cards_d_value.textContent);
+		d_point = parseInt(d_point) + parseInt(d_work[work2]);
+		console.log(parseInt(d_point) + parseInt(d_work[work2]));
+	
+		console.log(d_point);
+		work2 = work2 + 1;
+		
+	}
+	
 	
 }
 

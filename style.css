@@ -3,15 +3,6 @@ html {
 	background-color: green;
 }
 
-body{
-	position: relative;
-}
-
-#winpoint p{
-	position: absolute;
-	right: 2vw;
-}
-
 .card {
 	margin: auto;
 }
@@ -21,10 +12,7 @@ body{
 }
 
 #cards_d img{
-	height: 15vw;
-	margin-top: 1vw;
-	margin-right: 0.5vw;
-	margin-bottom: 1vh;
+	height: 20vw;
 }
 
 #cards_p {
@@ -32,11 +20,9 @@ body{
 }
 
 #cards_p img{
-	height: 20vw;
-	margin-right: 0.5vw;
+	height: 15vw;
 }
 
 #hitstand {
 	display: flex;
-
 }
