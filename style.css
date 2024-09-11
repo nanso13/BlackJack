@@ -2,7 +2,9 @@ html {
 	text-align: center;
 	background-color: green;
 }
-
+#btitle{
+	margin-top: 20%;
+}
 .card {
 	margin: auto;
 }
@@ -25,4 +27,9 @@ html {
 
 #hitstand {
 	display: flex;
+}
+
+#winpoint {
+	font-size: 150%;
+	color: white;
 }
