@@ -2,6 +2,9 @@ html {
 	text-align: center;
 	background-color: green;
 }
+h1{
+	font-family: "Segoe script";
+}
 #btitle{
 	margin-top: 20%;
 }

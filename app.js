@@ -6,6 +6,7 @@
 	const card_d_div = document.createElement("div"); 
 	const card_p_div = document.createElement("div");
 	const winpoint = document.getElementById("winpoint");
+	const tryagain = document.getElementById("tryagain");
 	let d_point = 0;
 	let p_point = 0;
 	const d_work = [];
@@ -101,8 +102,8 @@ document.getElementById("hit").addEventListener("click", async () => {
 	p_point = parseInt(p_point) + parseInt(p_work[work]);
 	console.log(p_point);
 	cards_p_div.appendChild(cards_p_image);
-	if(p_point >= random_win_point) {
-		logic();
+	if(p_point > random_win_point) {
+		bust();
 	}
 });
 
@@ -138,6 +139,12 @@ async function logic(){
 		
 	}
 	
+	
+}
+
+function bust() {
+	document.getElementById("hit").style.visibility = 'hidden';
+	document.getElementById("stand").style.visibility = 'hidden';
 	
 }
 
