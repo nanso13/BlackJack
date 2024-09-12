@@ -18,15 +18,21 @@
 
 	<div id="winpoint"></div>
 	<div class="card">
-		<div id="cards_d"></div>
-		<div id="cards_p"></div>
-	</div>
+		<p id="d_text" style="visibility: hidden;"></p>
+		<div id="cards_d"></div><br>
+		<div id="cards_p"></div><br>
+		<p id="p_text" style="visibility: hidden;"></p>
 	<div id="hitstand">
 		<button id="hit" style="visibility: hidden;">hit</button>
 		<button id="stand" style="visibility: hidden;">stand</button>
 	</div>
 	<div id="tryagain">
 		<button id="restart" style="visibility: hidden;">try again</button>
+	</div>
+	<div id="modal" class="modal" style="display: none;">
+	    <div class="modal-content">
+	        <p id="modal-message">結果メッセージ</p>
+	    </div>
 	</div>
 </body>
 <script src="app.js"></script>

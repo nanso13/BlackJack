@@ -2,16 +2,11 @@ html {
 	text-align: center;
 	background-color: green;
 }
-<<<<<<< HEAD
 
-=======
-h1{
-	font-family: "Segoe script";
-}
 #btitle{
 	margin-top: 20%;
 }
->>>>>>> 27cc3281ad3c0699baad994e1ab6dd5f5eeb3c32
+
 .card {
 	margin: auto;
 }
@@ -32,6 +27,86 @@ h1{
 	height: 10vw;
 }
 
+#p_text{
+	color: white;
+}
+
+#d_text{
+	color: white;
+}
+
 #hitstand {
 	display: flex;
+	justify-content: center; 
+	align-items: center; 
+}
+
+#winpoint {
+	font-size: 150%;
+	color: white;
+}
+
+#start {
+	background: #ffffff;
+	color: #333333; 
+	box-shadow: 0 5px 0 #333; 
+	border-radius: 50vh; 
+	padding: 1em 2em 0.8em; 
+	line-height:1; 
+	display: inline-block
+}
+#restart {
+	background: #ffffff;
+	color: #333333; 
+	box-shadow: 0 5px 0 #333; 
+	border-radius: 50vh; 
+	padding: 1em 2em 0.8em; 
+	line-height:1; 
+	display: inline-block
+}
+#hit {
+	margin-left: 20px;
+	background: #ffffff;
+	color: #333333; 
+	box-shadow: 0 5px 0 #333; 
+	border-radius: 50vh; 
+	padding: 1em 2em 0.8em; 
+	line-height:1; 
+	display: inline-block
+}
+
+#stand {
+	margin-left: 50px;
+	background: #ffffff;
+	color: #333333; 
+	box-shadow: 0 5px 0 #333; 
+	border-radius: 50vh; 
+	padding: 1em 2em 0.8em; 
+	line-height:1; 
+	display: inline-block
+}
+
+.modal {
+    display: none; /* デフォルトでは非表示 */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 5px solid #888;
+    width: 50%;
+    border-radius: 2vh; 
+}
+#modal-message{
+	font-size: 5vh;
 }

@@ -6,6 +6,8 @@
 	const card_d_div = document.createElement("div"); 
 	const card_p_div = document.createElement("div");
 	const winpoint = document.getElementById("winpoint");
+	const d_text = document.getElementById("d_text");
+	const p_text = document.getElementById("p_text");
 	let d_point = 0;
 	let p_point = 0;
 	const d_work = [];
@@ -20,7 +22,8 @@
 // Start BlackJackボタンを押されたときに動く
 async function startGame() {
 	document.getElementById('restart').style.visibility = 'hidden';
-	
+	d_text.textContent = "";
+	p_text.textContent = "";
 	const d_work = [];
 	const p_work = [];
 	const button = document.getElementById("hitstand");
@@ -74,8 +77,13 @@ async function startGame() {
 	
 		d_point = parseInt(d_work[0]);
 		p_point = parseInt(p_work[0]) + parseInt(p_work[1]);
-		console.log(d_point);
-		console.log(p_point);
+		
+	document.getElementById('d_text').style.visibility = 'visible';
+	document.getElementById('p_text').style.visibility = 'visible';
+	d_text.textContent = `ディーラー 合計値: ${d_point}`;
+	p_text.textContent = `あなた 合計値: ${p_point}`;
+	console.log(d_point);
+	console.log(p_point);
 	document.getElementById('hit').style.visibility = 'visible';
 	document.getElementById('stand').style.visibility = 'visible';
 	
@@ -101,6 +109,7 @@ document.getElementById("hit").addEventListener("click", async () => {
 	p_point = parseInt(p_point) + parseInt(p_work[work]);
 	console.log(p_point);
 	cards_p_div.appendChild(cards_p_image);
+	p_text.textContent = `あなた 合計値: ${p_point}`;
 	if(p_point > random_win_point) {
 		bust();
 	}
@@ -135,7 +144,8 @@ async function logic(){
 		console.log(cards_d_value.textContent);
 		d_point = parseInt(d_point) + parseInt(d_work[work2]);
 		console.log(parseInt(d_point) + parseInt(d_work[work2]));
-	
+		
+		d_text.textContent = `ディーラー 合計値: ${d_point}`;
 		console.log(d_point);
 		work2 = work2 + 1;
 		
@@ -155,13 +165,17 @@ function bust() {
 }
 
 function winlose(w){
+	const modal = document.getElementById('modal');
+    const modalMessage = document.getElementById('modal-message');
 	if(w == "win") {
-		console.log(w);
+		modalMessage.textContent = w;
 	}else if(w == "draw"){
-		console.log(w);
+		modalMessage.textContent = w;
 	}else {
-		console.log(w);
+		modalMessage.textContent = w;
 	}
+	
+	modal.style.display = "block";
 }
 
 function calc(){
@@ -309,3 +323,10 @@ let rouletteTrack = document.getElementById('rouletteTrack');
 
     startRoulette();
 	});
+	
+	window.onclick = function(event) {
+    const modal = document.getElementById('modal');
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
