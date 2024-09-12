@@ -2,16 +2,11 @@ html {
 	text-align: center;
 	background-color: green;
 }
-<<<<<<< HEAD
 
-=======
-h1{
-	font-family: "Segoe script";
-}
 #btitle{
 	margin-top: 20%;
 }
->>>>>>> 27cc3281ad3c0699baad994e1ab6dd5f5eeb3c32
+
 .card {
 	margin: auto;
 }
@@ -21,7 +16,7 @@ h1{
 }
 
 #cards_d img{
-	height: 20vw;
+	height: 15vw;
 }
 
 #cards_p {
@@ -34,4 +29,43 @@ h1{
 
 #hitstand {
 	display: flex;
+	justify-content: center; 
+	align-items: center; 
+}
+
+#winpoint {
+	font-size: 150%;
+	color: white;
+}
+
+#start {
+	background: #ffffff;
+	color: #333333; 
+	box-shadow: 0 5px 0 #333; 
+	border-radius: 50vh; 
+	padding: 1em 2em 0.8em; 
+	line-height:1; 
+	display: inline-block
+}
+
+#hit {
+	margin-left: 20px;
+	background: #ffffff;
+	color: #333333; 
+	box-shadow: 0 5px 0 #333; 
+	border-radius: 50vh; 
+	padding: 1em 2em 0.8em; 
+	line-height:1; 
+	display: inline-block
+}
+
+#stand {
+	margin-left: 50px;
+	background: #ffffff;
+	color: #333333; 
+	box-shadow: 0 5px 0 #333; 
+	border-radius: 50vh; 
+	padding: 1em 2em 0.8em; 
+	line-height:1; 
+	display: inline-block
 }
