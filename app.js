@@ -6,7 +6,6 @@
 	const card_d_div = document.createElement("div"); 
 	const card_p_div = document.createElement("div");
 	const winpoint = document.getElementById("winpoint");
-	const tryagain = document.getElementById("tryagain");
 	let d_point = 0;
 	let p_point = 0;
 	const d_work = [];
@@ -16,9 +15,13 @@
 	let deck_id = "";
 	let random_win_point = "";
 
+
 // Start BlackJackボタンを押されたときに動く
-document.getElementById("start").addEventListener("click", async () => {
-	document.getElementById("btitle").remove();
+async function startGame() {
+	document.getElementById('restart').style.visibility = 'hidden';
+	if(document.getElementById("btitle")){
+		document.getElementById("btitle").remove();
+	}
 	const d_work = [];
 	const p_work = [];
 	const button = document.getElementById("hitstand");
@@ -81,7 +84,7 @@ document.getElementById("start").addEventListener("click", async () => {
 	document.getElementById("winpoint").appendChild(winp);
 	
 	
-});
+};
 
 // ヒットボタンを押された場合
 document.getElementById("hit").addEventListener("click", async () => {
@@ -104,6 +107,9 @@ document.getElementById("hit").addEventListener("click", async () => {
 	cards_p_div.appendChild(cards_p_image);
 	if(p_point > random_win_point) {
 		bust();
+	}
+	if(p_point == random_win_point){
+		logic();
 	}
 });
 
@@ -139,15 +145,39 @@ async function logic(){
 		
 	}
 	
+	calc();
 	
+	document.getElementById('restart').style.visibility = 'visible';
 }
 
 function bust() {
 	document.getElementById("hit").style.visibility = 'hidden';
 	document.getElementById("stand").style.visibility = 'hidden';
+	winlose("lose");
 	
+	document.getElementById('restart').style.visibility = 'visible';
+}
+
+function winlose(w){
+	if(w == "win") {
+		console.log(w);
+	}else if(w == "draw"){
+		console.log(w);
+	}else {
+		console.log(w);
+	}
 }
 
 function calc(){
-	
+	if(d_point > random_win_point) {
+		winlose("win");
+	}else {
+		if(p_point > d_point){
+			winlose("win");
+		}else if(p_point == d_point){
+			winlose("draw");
+		}else {
+			winlose("lose");
+		}
+	}
 }
