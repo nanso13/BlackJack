@@ -2,7 +2,16 @@ html {
 	text-align: center;
 	background-color: green;
 }
+<<<<<<< HEAD
 
+=======
+h1{
+	font-family: "Segoe script";
+}
+#btitle{
+	margin-top: 20%;
+}
+>>>>>>> 27cc3281ad3c0699baad994e1ab6dd5f5eeb3c32
 .card {
 	margin: auto;
 }

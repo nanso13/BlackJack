@@ -2,12 +2,21 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/ru-reto.css">
 </head>
 <body>
 	<div id="btitle">
-		<h1>rndBlackJack</h1>
-		<button id="start">Start BlackJack</button>
+		<h1>Roulette BlackJack</h1>
+		<button id="start" onclick="startRoulette()">Start BlackJack</button>
 	</div>
+
+
+	<div class="roulette-container">
+		<div class="roulette-track" id="rouletteTrack">
+			<!-- 数字はJavaScriptで追加 -->
+		</div>
+	</div>
+
 	<div id="winpoint"></div>
 	<div class="card">
 		<div id="cards_d"></div>
@@ -17,6 +26,8 @@
 		<button id="hit" style="visibility: hidden;">hit</button>
 		<button id="stand" style="visibility: hidden;">stand</button>
 	</div>
+	<div id="tryagain"></div>
 </body>
 <script src="app.js"></script>
+<script src="js/ru-reto.js"></script>
 </html>
