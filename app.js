@@ -17,6 +17,7 @@
 
 // Start BlackJackボタンを押されたときに動く
 document.getElementById("start").addEventListener("click", async () => {
+	document.getElementById("btitle").remove();
 	const d_work = [];
 	const p_work = [];
 	const button = document.getElementById("hitstand");
@@ -75,7 +76,7 @@ document.getElementById("start").addEventListener("click", async () => {
 		console.log(p_point);
 	document.getElementById('hit').style.visibility = 'visible';
 	document.getElementById('stand').style.visibility = 'visible';
-	winp.textContent = random_win_point;
+	winp.textContent = "目標点:" + random_win_point;
 	document.getElementById("winpoint").appendChild(winp);
 	
 	
