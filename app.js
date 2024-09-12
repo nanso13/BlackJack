@@ -180,7 +180,7 @@ function calc(){
 
 let rouletteTrack = document.getElementById('rouletteTrack');
     let numbers = [];
-    for (let i = 21; i <= 60; i++) {
+    for (let i = 21; i <= 50; i++) {
         numbers.push(i);
     }
 
@@ -194,7 +194,7 @@ let rouletteTrack = document.getElementById('rouletteTrack');
 
     // 数字を初期化する関数
     function initializeNumbers() {
-        let uniqueNumbers = [...numbers]; // 21から60までのユニークな数字
+        let uniqueNumbers = [...numbers]; // 21から50までのユニークな数字
         shuffle(uniqueNumbers); // ランダムに並べる
         rouletteTrack.innerHTML = '';
         uniqueNumbers.forEach(num => {
@@ -215,6 +215,7 @@ let rouletteTrack = document.getElementById('rouletteTrack');
 	    if(document.getElementById("btitle")){
 			document.getElementById("btitle").remove();
 		}
+    	document.getElementById('restart').style.visibility = 'hidden';
     	document.getElementById('roulette').style.visibility = 'visible';
         clearInterval(interval);
         initializeNumbers();
@@ -228,7 +229,7 @@ let rouletteTrack = document.getElementById('rouletteTrack');
         speed = 80; // 初期スピード
 
         interval = setInterval(() => {
-            speed *= 0.98; // 減速
+            speed *= 0.95; // 減速
             currentIndex += speed;
 
             if (currentIndex >= totalWidth / 2) {
@@ -251,8 +252,9 @@ let rouletteTrack = document.getElementById('rouletteTrack');
     function adjustPositionAndHighlight() {
         let containerRect = document.querySelector('.roulette-container').getBoundingClientRect();
         let numbers = document.querySelectorAll('.number');
-        let selectedNumber = null;
+        let closestNumber = null;
         let closestDistance = Infinity;
+        let containerWidth = document.querySelector('.roulette-container').offsetWidth;
 
         // コンテナの中央を計算
         let containerCenterX = containerRect.left + containerRect.width / 2;
@@ -272,11 +274,12 @@ let rouletteTrack = document.getElementById('rouletteTrack');
         if (closestNumber) {
             closestNumber.classList.add('highlight'); // 最も近い数字をハイライト
             console.log("選ばれた数値は: " + closestNumber.textContent);
-
-            // ハイライトされた数字を中央に配置するための調整量を計算
+/**
+              // ハイライトされた数字を中央に配置するための調整量を計算
             let numberRect = closestNumber.getBoundingClientRect();
-            let numberCenterX = numberRect.left + numberRect.width / 2 - 25;
-            let offset = containerCenterX - numberCenterX;
+	        let numberCenterX = numberRect.left + numberRect.width / 2;
+	        let containerCenterX = document.querySelector('.roulette-container').getBoundingClientRect().left + containerWidth / 2;
+	        let offset = containerCenterX - numberCenterX;
 
             // トラックの位置を調整して、選ばれた数字を中央に配置
             let trackTransformValue = parseFloat(rouletteTrack.style.transform.replace('translateX(', '').replace('px)', '')) || 0;
@@ -291,10 +294,18 @@ let rouletteTrack = document.getElementById('rouletteTrack');
             }
 
             rouletteTrack.style.transform = `translateX(${newTransformValue}px)`;
-            
+       **/
         	random_win_point = parseInt(closestNumber.textContent); // closestNumberから数値を取得
         	startGame();
         }
     }
 
     window.onload = initializeNumbers;
+    
+    document.getElementById('restart').addEventListener('click', () => {
+    rouletteTrack.style.transform = 'translateX(0)';
+
+    initializeNumbers();
+
+    startRoulette();
+	});
