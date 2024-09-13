@@ -6,6 +6,9 @@ html {
 #btitle{
 	margin-top: 20%;
 }
+h1{
+	font-family: "Segoe-script";
+}
 
 .card {
 	margin: auto;
